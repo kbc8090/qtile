@@ -298,9 +298,9 @@ def init_colors():
     return [["#495061", "#495061"], # color 0
             ["#2e3440", "#2e3440"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#fba922", "#fba922"], # color 3
+            ["#ffcb6b", "#ffcb6b"], # color 3
             ["#0099ff", "#0099ff"], # color 4
-            ["#ffffff", "#f3f4f5"], # color 5
+            ["#ffffff", "#ffffff"], # color 5
             ["#cd1f3f", "#cd1f3f"], # color 6
             ["#c3e88d", "#c3e88d"], # color 7
             ["#417ED9", "#417ED9"], # color 8
@@ -382,7 +382,7 @@ def init_widgets_list():
                widget.CurrentLayout(
 		    	fontsize = 16,
                         font = "Ubuntu Mono Bold",
-                        foreground = colors[3],
+                        foreground = colors[7],
                         background = colors[1]
                         ),
                widget.Sep(
@@ -394,7 +394,7 @@ def init_widgets_list():
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
-                        foreground = "#89ddff",
+                        foreground = "#ff8b92",
                         background = colors[1],
                         ),
               widget.YahooWeather(
