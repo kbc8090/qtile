@@ -70,7 +70,6 @@ keys = [
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "w", lazy.spawn('vivaldi-stable')),
     Key([mod], "x", lazy.spawn('oblogout')),
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('urxvt')),
@@ -113,8 +112,6 @@ keys = [
     Key(["mod1", "control"], "s", lazy.spawn('spotify')),
     Key(["mod1", "control"], "t", lazy.spawn('st')),
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
-    Key(["mod1", "control"], "v", lazy.spawn('vivaldi-stable')),
-    Key(["mod1", "control"], "w", lazy.spawn('arcolinux-welcome-app')),
     Key(["mod1", "control"], "Return", lazy.spawn('termite')),
 
 # ALT + ... KEYS
