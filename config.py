@@ -274,7 +274,7 @@ for i in groups:
 
 def init_layout_theme():
     return {"margin": 8,
-            "border_width": 1,
+            "border_width": 2,
             "border_focus": "#0099ff",
             "border_normal": "#4c566a"
             }
@@ -283,7 +283,7 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=8, border_width=1, border_focus="#0099ff", border_normal="#004c566a"),
+    layout.MonadTall(margin=7, border_width=2, border_focus="#0099ff", border_normal="#004c566a"),
     #layout.MonadWide(margin=8, border_width=3, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.Matrix(**layout_theme),
     #layout.Bsp(**layout_theme),
@@ -331,8 +331,8 @@ def init_widgets_list():
 #                        ),
                widget.Image(
                         filename = "/home/kbc/.config/qtile/icons/python.png",
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')},
-                        margin_x = 7,
+                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('xfce4-appfinder')},
+                        margin_x = 6,
                         margin_y = 3
                         ),
                widget.GroupBox(
@@ -410,7 +410,7 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 6,
+                        padding = 4,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -430,7 +430,7 @@ def init_widgets_list():
                         ), 
                widget.Sep(
                         linewidth = 0,
-                        padding = 6,
+                        padding = 4,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -452,7 +452,7 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 6,
+                        padding = 4,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -491,7 +491,7 @@ def init_widgets_list():
 #                        ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 6,
+                        padding = 4,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -646,6 +646,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'feh'},
     {'wmclass': 'lxappearance'},
     {'wmclass': 'qt5ct'},
+    {'wmclass': 'xfce4-appfinder'},
     {'wmclass': 'viewnior'},
     {'wmclass': 'gsimplecal'},
     {'wmclass': 'Galculator'},
