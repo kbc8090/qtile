@@ -58,7 +58,7 @@ keys = [
 
 # FUNCTION KEYS
 
-    Key([], "F12", lazy.spawn('xfce4-terminal')),
+    Key([], "F12", lazy.spawn('jgmenu_run')),
 
 # SUPER + FUNCTION KEYS
 
@@ -331,7 +331,7 @@ def init_widgets_list():
 #                        ),
                widget.Image(
                         filename = "/home/kbc/.config/qtile/icons/python.png",
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('xfce4-appfinder')},
+                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')},
                         margin_x = 6,
                         margin_y = 3
                         ),
