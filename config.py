@@ -336,8 +336,8 @@ def init_widgets_list():
                         margin_y = 3
                         ),
                widget.GroupBox(
-                       font = "IBM Plex Mono SemiBold",
-                       fontsize = 16,
+                       font = "Operator Mono Medium",
+                       fontsize = 18,
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 1,
@@ -380,7 +380,7 @@ def init_widgets_list():
                         background = colors[1]
                         ),
                widget.CurrentLayout(
-		    	fontsize = 16,
+                        fontsize = 16,
                         font = "Ubuntu Mono Bold",
                         foreground = colors[7],
                         background = colors[1]
@@ -395,7 +395,28 @@ def init_widgets_list():
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
                         foreground = "#ff8b92",
-                        background = colors[1],
+                        background = colors[1]
+                        ),
+               widget.TextBox(
+                        font="FontAwesome",
+                        text="  ",
+                        foreground="#000000",
+                        background="#82dbff",
+                        padding = 0,
+                        fontsize=16
+                        ),
+              widget.GenPollText(
+                        update_interval = 12000,
+                        func = lambda: subprocess.check_output("/home/kbc/.local/bin/kernel").decode("utf-8"),
+                        fontsize = 16,
+                        foreground = "#000000",
+                        background = "#82dbff"
+                        ),
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 4,
+                        foreground = colors[8],
+                        background = colors[1]
                         ),
               widget.YahooWeather(
                         location = "Gainesville, FL",
@@ -406,7 +427,7 @@ def init_widgets_list():
                         background = "#ffcb6b",
                        # woeid = '12771812',
                         metric = False,
-                        update_interval = '600',
+                        update_interval = '600'
                         ),
                widget.Sep(
                         linewidth = 0,
@@ -427,7 +448,7 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#c792ea",
                         fontsize = 16
-                        ), 
+                        ),
                widget.Sep(
                         linewidth = 0,
                         padding = 4,
@@ -623,7 +644,7 @@ floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 
 follow_mouse_focus = True
-bring_front_click = False
+bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Arcolinux-welcome-app.py'},

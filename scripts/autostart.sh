@@ -19,11 +19,12 @@ function run {
 
 #change your keyboard if you need it
 #setxkbmap -layout be
-/home/kbc/.config/qtile/scripts/compton-toggle.sh &
+picom &
 #autostart ArcoLinux Welcome App
-xset r rate 300 59
+#xset r rate 300 59
 #Some ways to set your wallpaper besides variety or nitrogen
-nitrogen --restore &
+
+#nitrogen --restore &
 #start the conky to learn the shortcuts
 #(conky -c $HOME/.config/qtile/scripts/system-overview) &
 
