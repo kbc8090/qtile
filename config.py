@@ -344,7 +344,7 @@ def init_widgets_list():
                        padding_x = 5,
                        borderwidth = 3,
                        active = '#ff8b92',
-                       inactive = colors[5],
+                       inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[0],
                        highlight_method = "line",
