@@ -65,7 +65,7 @@ keys = [
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=13' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=12' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
@@ -407,7 +407,7 @@ def init_widgets_list():
                         ),
               widget.GenPollText(
                         update_interval = 12000,
-                        func = lambda: subprocess.check_output("/home/kbc/.local/bin/kernel").decode("utf-8"),
+                        func = lambda: subprocess.check_output("/home/kbc/.local/bin/kernel").decode("utf-8").strip(),
                         fontsize = 16,
                         foreground = "#000000",
                         background = "#82dbff"
