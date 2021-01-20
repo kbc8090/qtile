@@ -91,7 +91,7 @@ keys = [
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
-    # Key([mod, "shift"], "x", lazy.shutdown()),
+     Key([mod, "shift"], "x", lazy.shutdown()),
 
 # CONTROL + ALT KEYS
 
@@ -419,7 +419,8 @@ def init_widgets_list():
                         background = colors[1]
                         ),
               widget.YahooWeather(
-                        location = "Gainesville, FL",
+                        #location = "Gainesville, FL",
+                        woeid = '12771812',
                         format = '{current_observation_condition_symbol} {current_observation_condition_text} {current_observation_condition_temperature}°{units_temperature}',
                         fontsize = 16,
                         foreground = "#000000",
@@ -670,6 +671,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'xfce4-appfinder'},
     {'wmclass': 'viewnior'},
     {'wmclass': 'gsimplecal'},
+    {'wmclass': 'Io.github.celluloid_player.Celluloid'},
+    {'wmclass': 'mpv'},
     {'wmclass': 'Galculator'},
     {'wmclass': 'Oblogout'},
     {'wname': 'branchdialog'},
