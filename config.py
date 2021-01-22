@@ -295,8 +295,8 @@ layouts = [
 # COLORS FOR THE BAR
 
 def init_colors():
-    return [["#495061", "#495061"], # color 0
-            ["#2e3440", "#2e3440"], # color 1
+    return [["#3c4457", "#3c4457"], # color 0
+            ["#1b1e2b", "#1b1e2b"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
             ["#ffcb6b", "#ffcb6b"], # color 3
             ["#0099ff", "#0099ff"], # color 4
@@ -348,7 +348,7 @@ def init_widgets_list():
                        rounded = False,
                        highlight_color = colors[0],
                        highlight_method = "line",
-                       this_current_screen_border = colors[8],
+                       this_current_screen_border = colors[4],
 #                       this_screen_border = colors [8],
 #                       other_current_screen_border = colors[0],
 #                       other_screen_border = colors[0],
