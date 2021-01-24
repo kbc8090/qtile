@@ -407,7 +407,7 @@ def init_widgets_list():
                         ),
               widget.GenPollText(
                         update_interval = 12000,
-                        func = lambda: subprocess.check_output("/home/kbc/.local/bin/kernel").decode("utf-8").strip(),
+                        func = lambda: subprocess.check_output(["uname", "-r"]).decode("utf-8").strip(),
                         fontsize = 16,
                         foreground = "#000000",
                         background = "#82dbff"
@@ -680,7 +680,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-],  fullscreen_border_width=0, max_border_width=0, border_width=1, border_focus="#0099ff", border_normal="#4c566a")
+],  fullscreen_border_width=0, max_border_width=0, border_width=2, border_focus="#0099ff", border_normal="#4c566a")
 auto_fullscreen = True
 
 #focus_on_window_activation = "focus" # or smart
