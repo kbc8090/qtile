@@ -65,7 +65,7 @@ keys = [
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=12' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono Bold:size=13' -nb '#1b1e2b' -nf 'white' -sb '#0099ff' -sf 'white'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
