@@ -32,7 +32,7 @@ import socket
 from libqtile.config import Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
-from libqtile.widget import Spacer
+#from libqtile.widget import Spacer
 #import arcomemory
 
 #mod4 or mod = super key
@@ -65,7 +65,7 @@ keys = [
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono Bold:size=13' -nb '#1b1e2b' -nf 'white' -sb '#0099ff' -sf 'white'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=16:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#0099ff' -sf 'white'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
@@ -275,7 +275,7 @@ for i in groups:
 def init_layout_theme():
     return {"margin": 8,
             "border_width": 2,
-            "border_focus": "#0099ff",
+            "border_focus": "#ffb26b",
             "border_normal": "#4c566a"
             }
 
@@ -283,7 +283,7 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=7, border_width=2, border_focus="#0099ff", border_normal="#004c566a"),
+    layout.MonadTall(margin=7, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
     #layout.MonadWide(margin=8, border_width=3, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.Matrix(**layout_theme),
     #layout.Bsp(**layout_theme),
@@ -391,10 +391,40 @@ def init_widgets_list():
                         foreground = colors[8],
                         background = colors[1]
                         ),
+#               widget.WindowCount(
+#                        fontsize = 16,
+#                        font = "Ubuntu Mono Bold",
+#                        foreground = colors[7],
+#                        background = colors[1]
+#                        ),
+#               widget.Sep(
+#                        linewidth = 1,
+#                        padding = 10,
+#                        foreground = colors[8],
+#                        background = colors[1]
+#                        ),
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
                         foreground = "#ff8b92",
+                        background = colors[1]
+                        ),
+              widget.YahooWeather(
+                        #location = "Gainesville, FL",
+                        woeid = '12771812',
+                        format = '{current_observation_condition_symbol} {current_observation_condition_text} {current_observation_condition_temperature}°{units_temperature}',
+                        fontsize = 16,
+                        foreground = "#000000",
+                        json = 'True',
+                        background = "#ffcb6b",
+                       # woeid = '12771812',
+                        metric = False,
+                        update_interval = '600'
+                        ),
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 5,
+                        foreground = colors[8],
                         background = colors[1]
                         ),
                widget.TextBox(
@@ -414,25 +444,7 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 4,
-                        foreground = colors[8],
-                        background = colors[1]
-                        ),
-              widget.YahooWeather(
-                        #location = "Gainesville, FL",
-                        woeid = '12771812',
-                        format = '{current_observation_condition_symbol} {current_observation_condition_text} {current_observation_condition_temperature}°{units_temperature}',
-                        fontsize = 16,
-                        foreground = "#000000",
-                        json = 'True',
-                        background = "#ffcb6b",
-                       # woeid = '12771812',
-                        metric = False,
-                        update_interval = '600'
-                        ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 4,
+                        padding = 5,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -452,11 +464,11 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 4,
+                        padding = 5,
                         foreground = colors[8],
                         background = colors[1]
                         ),
-               widget.TextBox(
+                widget.TextBox(
                         font="FontAwesome",
                         text="  ",
                         foreground="#000000",
@@ -474,7 +486,7 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 4,
+                        padding = 5,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -513,7 +525,7 @@ def init_widgets_list():
 #                        ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 4,
+                        padding = 5,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -680,7 +692,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'pinentry'},
     {'wmclass': 'ssh-askpass'},
 
-],  fullscreen_border_width=0, max_border_width=0, border_width=2, border_focus="#0099ff", border_normal="#4c566a")
+],  fullscreen_border_width=0, max_border_width=0, border_width=2, border_focus="#ffb26b", border_normal="#4c566a")
 auto_fullscreen = True
 
 #focus_on_window_activation = "focus" # or smart
