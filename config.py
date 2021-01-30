@@ -302,8 +302,8 @@ def init_colors():
             ["#0099ff", "#0099ff"], # color 4
             ["#ffffff", "#ffffff"], # color 5
             ["#cd1f3f", "#cd1f3f"], # color 6
-            ["#c3e88d", "#c3e88d"], # color 7
-            ["#417ED9", "#417ED9"], # color 8
+            ["#b7e07c", "#b7e07c"], # color 7
+            ["#719eff", "#719eff"], # color 8
             ["#6D7A8A", "#6D7A8A"]] # color 9
 
 
@@ -337,13 +337,13 @@ def init_widgets_list():
                         ),
                widget.GroupBox(
                        font = "Operator Mono Medium",
-                       fontsize = 18,
+                       fontsize = 19,
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 1,
                        padding_x = 5,
                        borderwidth = 3,
-                       active = '#ff8b92',
+                       active = '#f07178',
                        inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[0],
@@ -406,7 +406,7 @@ def init_widgets_list():
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
-                        foreground = "#ff8b92",
+                        foreground = "#f07178",
                         background = colors[1]
                         ),
               widget.YahooWeather(
@@ -417,6 +417,7 @@ def init_widgets_list():
                         foreground = "#000000",
                         json = 'True',
                         background = "#ffcb6b",
+                        padding = 6,
                        # woeid = '12771812',
                         metric = False,
                         update_interval = '600'
@@ -429,16 +430,17 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
+                        text=" ",
                         foreground="#000000",
                         background="#82dbff",
-                        padding = 0,
-                        fontsize=16
+                        padding = 2,
+                        fontsize=18
                         ),
               widget.GenPollText(
                         update_interval = 12000,
                         func = lambda: subprocess.check_output(["uname", "-r"]).decode("utf-8").strip(),
                         fontsize = 16,
+                        padding = 6,
                         foreground = "#000000",
                         background = "#82dbff"
                         ),
@@ -450,16 +452,17 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
+                        text=" ",
                         foreground="#000000",
                         background="#c792ea",
-                        padding = 0,
-                        fontsize = 16
+                        padding = 2,
+                        fontsize = 18
                         ),
                widget.Volume(
                         font="Ubuntu Mono Bold",
                         foreground="#000000",
                         background="#c792ea",
+                        padding = 6,
                         fontsize = 16
                         ),
                widget.Sep(
@@ -470,17 +473,18 @@ def init_widgets_list():
                         ),
                 widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
+                        text=" ",
                         foreground="#000000",
                         background="#82aaff",
-                        padding = 0,
-                        fontsize=16
+                        padding = 2,
+                        fontsize=18
                         ),
                widget.Memory(
                         font = "Ubuntu Mono Bold",
                         format = '{MemUsed}M',
                         update_interval = 5,
                         fontsize = 16,
+                        padding = 6,
                         foreground = "#000000",
                         background = "#82aaff",
                         ),
@@ -495,8 +499,8 @@ def init_widgets_list():
                         text="  ",
                         foreground="#000000",
                         background="#f07178",
-                        padding = 0,
-                        fontsize=16
+                        padding = 2,
+                        fontsize=18
                         ),
                widget.TextBox(
                         text="Updates:",
@@ -511,6 +515,7 @@ def init_widgets_list():
                         fontsize = 16,
                         execute = 'urxvt',
                         update_interval = "600",
+                        padding = 6,
                         colour_have_updates = colors[5]
                         ),
 #               widget.CheckUpdates(
@@ -535,12 +540,13 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#c3e88d",
                         padding = 0,
-                        fontsize=16
+                        fontsize=18
                         ),
                widget.Clock(
                         foreground = "#000000",
                         background = "#c3e88d",
                         fontsize = 16,
+                        padding = 6,
                         format="%b %d, %I:%M %p"
                         ),
                widget.Sep(
