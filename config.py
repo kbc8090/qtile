@@ -338,11 +338,12 @@ def init_widgets_list():
                widget.GroupBox(
                        font = "Operator Mono Medium",
                        fontsize = 19,
+#                       fontshadow = "#000000",
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 1,
-                       padding_x = 5,
-                       borderwidth = 3,
+                       padding_x = 6,
+                       borderwidth = 2,
                        active = '#f07178',
                        inactive = colors[2],
                        rounded = False,
@@ -572,7 +573,7 @@ widgets_screen1 = init_widgets_screen1()
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24, opacity=0.93))]
 screens = init_screens()
 
 
