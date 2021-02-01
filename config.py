@@ -549,22 +549,10 @@ def init_widgets_list():
                         padding = 6,
                         format="%b %d, %I:%M %p"
                         ),
-               widget.Sep(
-                        linewidth = 0,
-                        padding = 2,
-                        foreground = colors[8],
-                        background = colors[1]
-                        ),
                widget.Systray(
                         background=colors[1],
                         icon_size=20,
-                        padding = 3
-                        ),
-              widget.Sep(
-                        linewidth = 0,
-                        padding = 5,
-                        foreground = colors[1],
-                        background = colors[1]
+                        padding = 4
                         ),
               ]
     return widgets_list
