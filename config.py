@@ -407,7 +407,7 @@ def init_widgets_list():
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
-                        foreground = "#f07178",
+                        foreground = "#c387ea",
                         background = colors[1]
                         ),
               widget.YahooWeather(
@@ -431,7 +431,7 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text=" ",
+                        text="  ",
                         foreground="#000000",
                         background="#82dbff",
                         padding = 2,
