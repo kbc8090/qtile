@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cupd=$(checkupdates | wc -l)
+if [[ $cupd -eq 0 ]]
+then
+	echo -e "  No Updates "
+elif [[ $cupd -eq 1 ]]
+then
+	echo -e "  $cupd Update "
+else
+	echo -e "  $cupd Updates "
+fi

@@ -31,7 +31,7 @@ import subprocess
 import socket
 from libqtile.config import Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
+from libqtile import layout, bar, widget, hook, qtile
 #from libqtile.widget import Spacer
 #import arcomemory
 
@@ -65,7 +65,7 @@ keys = [
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=16:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#0099ff' -sf 'white'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=12:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#548aff' -sf '#1b1e2b' -h '22'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
@@ -75,7 +75,7 @@ keys = [
     Key([mod], "Return", lazy.spawn('urxvt')),
     Key([mod], "KP_Enter", lazy.spawn('st')),
     Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check')),
-    Key([mod], "F2", lazy.spawn('code')),
+    Key([mod], "F2", lazy.spawn('firefox')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
     Key([mod], "F8", lazy.spawn('thunar')),
@@ -241,12 +241,12 @@ keys = [
 groups = []
 
 # FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8",]
+group_names = ["1", "2", "3", "4", "5", "6",]
 
-group_labels = ["1", "2", "3", "4", "5", "6", "7", "8",]
+group_labels = ["1", "2", "3", "4", "5", "6",]
 #group_labels = ["", "", "", "", "", "", "", "", "", "",]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
+group_layouts = ["monadtall", "max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 
 for i in range(len(group_names)):
     groups.append(
@@ -331,7 +331,7 @@ def init_widgets_list():
 #                        ),
                widget.Image(
                         filename = "/home/kbc/.config/qtile/icons/python.png",
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('jgmenu_run')},
+                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('jgmenu_run')},
                         margin_x = 6,
                         margin_y = 3
                         ),
@@ -392,34 +392,43 @@ def init_widgets_list():
                         foreground = colors[8],
                         background = colors[1]
                         ),
-#               widget.WindowCount(
-#                        fontsize = 16,
-#                        font = "Ubuntu Mono Bold",
-#                        foreground = colors[7],
-#                        background = colors[1]
-#                        ),
-#               widget.Sep(
-#                        linewidth = 1,
-#                        padding = 10,
-#                        foreground = colors[8],
-#                        background = colors[1]
-#                        ),
+               widget.WindowCount(
+                        fontsize = 16,
+                        font = "Ubuntu Mono Bold",
+                        foreground = colors[3],
+                        show_zero = True,
+                        background = colors[1]
+                        ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[8],
+                        background = colors[1]
+                       ),
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
+                        mouse_callbacks = {'Button2': lambda: qtile.current_window.kill()},
                         foreground = "#c387ea",
                         background = colors[1]
                         ),
-              widget.YahooWeather(
-                        #location = "Gainesville, FL",
-                        woeid = '12771812',
-                        format = '{current_observation_condition_symbol} {current_observation_condition_text} {current_observation_condition_temperature}°{units_temperature}',
+               widget.TextBox(
+                        font="FontAwesome",
+                        text=" ",
+                        foreground="#000000",
+                        background="#ffcb6b",
+                        padding = 2,
+                        fontsize=16
+                        ),
+              widget.OpenWeather(
+                        app_key = '7834197c2338888258f8cb94ae14ef49',
+                        cityid = '4156404',
+                        format = '{weather_details} {main_temp}°{units_temperature} ',
                         fontsize = 16,
                         foreground = "#000000",
                         json = 'True',
                         background = "#ffcb6b",
                         padding = 6,
-                       # woeid = '12771812',
                         metric = False,
                         update_interval = '600'
                         ),
@@ -435,7 +444,7 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#82dbff",
                         padding = 2,
-                        fontsize=18
+                        fontsize=16
                         ),
               widget.GenPollText(
                         update_interval = 12000,
@@ -457,7 +466,7 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#c792ea",
                         padding = 2,
-                        fontsize = 18
+                        fontsize = 16
                         ),
                widget.Volume(
                         font="Ubuntu Mono Bold",
@@ -478,7 +487,7 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#82aaff",
                         padding = 2,
-                        fontsize=18
+                        fontsize=16
                         ),
                widget.Memory(
                         font = "Ubuntu Mono Bold",
@@ -495,40 +504,48 @@ def init_widgets_list():
                         foreground = colors[8],
                         background = colors[1]
                         ),
-               widget.TextBox(
-                        font="FontAwesome",
-                        text="  ",
-                        foreground="#000000",
-                        background="#f07178",
-                        padding = 2,
-                        fontsize=18
-                        ),
-               widget.TextBox(
-                        text="Updates:",
-                        foreground="#000000",
-                        background="#f07178",
-                        padding = 0,
-                        fontsize = 16
-                        ),
-               widget.Pacman(
-                        foreground = "#000000",
-                        background = "#f07178",
-                        fontsize = 16,
-                        execute = 'urxvt',
-                        update_interval = "600",
-                        padding = 6,
-                        colour_have_updates = colors[5]
-                        ),
+#               widget.TextBox(
+#                        font="FontAwesome",
+#                        text="  ",
+#                        foreground="#000000",
+#                        background="#f07178",
+#                        padding = 2,
+#                        fontsize=16
+#                        ),
+#               widget.TextBox(
+#                        text="Updates:",
+#                        foreground="#000000",
+#                        background="#f07178",
+#                        padding = 0,
+#                        fontsize = 16
+#                        ),
+#               widget.Pacman(
+#                        foreground = "#000000",
+#                        background = "#f07178",
+#                        fontsize = 16,
+#                        execute = 'urxvt',
+#                        update_interval = "600",
+#                        padding = 6,
+#                        colour_have_updates = colors[5]
+#                        ),
 #               widget.CheckUpdates(
 #                        distro='Arch',
-#                        format = 'Updates: {updates}',
-#                        foreground = colors[5],
-#                        background = colors[1],
-#                        colour_have_updates = colors[3],
+#                        custom_command = 'cat /home/kbc/.xinitrc',
+#                        display_format = '   Updates: {updates} ',
+#                        foreground = '#5522ab',
+#                        background = '#f07178',
 #                        fontsize = 16,
 #                        execute = 'urxvt',
 #                        update_interval = "600"
 #                        ),
+              widget.GenPollText(
+                        update_interval = 600,
+                        func = lambda: subprocess.check_output(["/home/kbc/.config/qtile/scripts/pacupdate"]).decode("utf-8").strip(),
+                        fontsize = 16,
+                        padding = 6,
+                        foreground = "#000000",
+                        background = "#f07178"
+                        ),
                widget.Sep(
                         linewidth = 0,
                         padding = 5,
@@ -541,7 +558,7 @@ def init_widgets_list():
                         foreground="#000000",
                         background="#c3e88d",
                         padding = 0,
-                        fontsize=18
+                        fontsize=16
                         ),
                widget.Clock(
                         foreground = "#000000",
@@ -573,7 +590,7 @@ widgets_screen1 = init_widgets_screen1()
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24, opacity=0.93))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, opacity=0.93))]
 screens = init_screens()
 
 
