@@ -74,7 +74,7 @@ keys = [
     Key([mod], "Escape", lazy.spawn('xkill')),
     Key([mod], "Return", lazy.spawn('urxvt')),
     Key([mod], "KP_Enter", lazy.spawn('st')),
-    Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check')),
+    Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check --force-dark-mode')),
     Key([mod], "F2", lazy.spawn('firefox')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
@@ -165,10 +165,10 @@ keys = [
     Key([mod], "Down", lazy.layout.down()),
     Key([mod], "Left", lazy.layout.left()),
     Key([mod], "Right", lazy.layout.right()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.previous()),
+    Key([mod], "j", lazy.layout.next()),
 #    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
+#    Key([mod], "l", lazy.layout.right()),
 
 
 # RESIZE UP, DOWN, LEFT, RIGHT
