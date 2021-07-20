@@ -298,7 +298,7 @@ def init_colors():
     return [["#3c4457", "#3c4457"], # color 0
             ["#1b1e2b", "#1b1e2b"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#ffcb6b", "#ffcb6b"], # color 3
+            ["#ffb26b", "#ffb26b"], # color 3
             ["#0099ff", "#0099ff"], # color 4
             ["#ffffff", "#ffffff"], # color 5
             ["#cd1f3f", "#cd1f3f"], # color 6
@@ -416,7 +416,7 @@ def init_widgets_list():
                         font="FontAwesome",
                         text=" ",
                         foreground="#000000",
-                        background="#ffcb6b",
+                        background="#ffb26b",
                         padding = 2,
                         fontsize=16
                         ),
@@ -427,7 +427,7 @@ def init_widgets_list():
                         fontsize = 16,
                         foreground = "#000000",
                         json = 'True',
-                        background = "#ffcb6b",
+                        background = "#ffb26b",
                         padding = 6,
                         metric = False,
                         update_interval = '600'
@@ -491,7 +491,8 @@ def init_widgets_list():
                         ),
                widget.Memory(
                         font = "Ubuntu Mono Bold",
-                        format = '{MemUsed}M',
+                        #format = '{MemUsed}M',
+                        format = '{MemUsed:.0f}{mm}',
                         update_interval = 5,
                         fontsize = 16,
                         padding = 6,
