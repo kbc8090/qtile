@@ -29,7 +29,7 @@ import os
 import re
 import subprocess
 import socket
-from libqtile.config import Key, Screen, Group, Drag, Click, Rule
+from libqtile.config import Key, Screen, Group, Drag, Click, Match, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook, qtile
 #from libqtile.widget import Spacer
@@ -591,7 +591,7 @@ widgets_screen1 = init_widgets_screen1()
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, opacity=0.93))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, border_width=[0, 0, 1, 0], opacity=1.00))]
 screens = init_screens()
 
 
@@ -673,37 +673,31 @@ follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'Arcolinux-welcome-app.py'},
-    {'wmclass': 'Arcolinux-tweak-tool.py'},
-    {'wmclass': 'audacious'},
-    {'wmclass': 'vlc'},
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},
-    {'wmclass': 'makebranch'},
-    {'wmclass': 'maketag'},
-    {'wmclass': 'Nitrogen'},
-    {'wmclass': 'Arandr'},
-    {'wmclass': 'feh'},
-    {'wmclass': 'lxappearance'},
-    {'wmclass': 'qt5ct'},
-    {'wmclass': 'xfce4-appfinder'},
-    {'wmclass': 'viewnior'},
-    {'wmclass': 'gsimplecal'},
-    {'wmclass': 'Io.github.celluloid_player.Celluloid'},
-    {'wmclass': 'mpv'},
-    {'wmclass': 'Galculator'},
-    {'wmclass': 'Oblogout'},
-    {'wname': 'branchdialog'},
-    {'wname': 'Open File'},
-    {'wname': 'pinentry'},
-    {'wmclass': 'ssh-askpass'},
+    *layout.Floating.default_float_rules,
+    Match(wm_class='audacious'),
+  Match(wm_class='vlc'),
+  Match(wm_class='confirm'),
+  Match(wm_class='dialog'),
+  Match(wm_class='download'),
+  Match(wm_class='error'),
+  Match(wm_class='file_progress'),
+  Match(wm_class='notification'),
+  Match(wm_class='splash'),
+  Match(wm_class='toolbar'),
+  Match(wm_class='confirmreset'),
+  Match(wm_class='maketag'),
+  Match(wm_class='Nitrogen'),
+  Match(wm_class='feh'),
+  Match(wm_class='lxappearance'),
+  Match(wm_class='qt5ct'),
+  Match(wm_class='xfce4-appfinder'),
+  Match(wm_class='viewnior'),
+  Match(wm_class='gsimplecal'),
+  Match(wm_class='Io.github.celluloid_player.Celluloid'),
+  Match(wm_class='mpv'),
+  Match(wm_class='Galculator'),
+  Match(wm_class='Oblogout'),
+  Match(wm_class='ssh-askpass'),
 
 ],  fullscreen_border_width=0, max_border_width=0, border_width=2, border_focus="#ffb26b", border_normal="#4c566a")
 auto_fullscreen = True
