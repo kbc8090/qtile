@@ -72,10 +72,11 @@ keys = [
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "x", lazy.spawn('oblogout')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('urxvt')),
+    Key([mod], "Return", lazy.spawn('urxvt -e fish')),
     Key([mod], "KP_Enter", lazy.spawn('st')),
     Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check --force-dark-mode')),
     Key([mod], "F2", lazy.spawn('firefox')),
+    Key([mod], "n", lazy.spawn('nitrogen')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
     Key([mod], "F8", lazy.spawn('thunar')),
@@ -91,7 +92,7 @@ keys = [
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
-     Key([mod, "shift"], "x", lazy.shutdown()),
+    Key([mod, "shift"], "x", lazy.shutdown()),
 
 # CONTROL + ALT KEYS
 
@@ -157,7 +158,7 @@ keys = [
 #    Key([], "XF86AudioStop", lazy.spawn("mpc stop")),
 
 # QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize()),
+#    Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
 
 # CHANGE FOCUS
@@ -261,7 +262,7 @@ for i in groups:
 
 #CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
-        Key([mod], "Tab", lazy.screen.next_group()),
+        Key([mod], "Tab", lazy.screen.next_group(skip_empty=True)),
         Key(["mod1"], "Tab", lazy.screen.next_group()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
 
@@ -272,14 +273,20 @@ for i in groups:
     ])
 
 
-def init_layout_theme():
-    return {"margin": 8,
-            "border_width": 2,
-            "border_focus": "#ffb26b",
-            "border_normal": "#4c566a"
-            }
+#def init_layout_theme():
+#    return {"margin": 8,
+#            "border_width": 2,
+#            "border_focus": "#ffb26b",
+#            "border_normal": "#4c566a"
+#            }
 
-layout_theme = init_layout_theme()
+#layout_theme = init_layout_theme()
+
+layout_theme = {"border_width": 2,
+                "margin": 8,
+                "border_focus": "#ffb26b",
+                "border_normal": "#4c566a"
+                }
 
 
 layouts = [
@@ -289,7 +296,7 @@ layouts = [
     #layout.Bsp(**layout_theme),
     #layout.Floating(fullscreen_border_width=0, max_border_width=1, border_width=1, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.RatioTile(**layout_theme),
-    layout.Max(**layout_theme)
+    layout.Max()
 ]
 
 # COLORS FOR THE BAR
@@ -331,14 +338,17 @@ def init_widgets_list():
 #                        ),
                widget.Image(
                         filename = "/home/kbc/.config/qtile/icons/python.png",
-                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn('jgmenu_run')},
+                        mouse_callbacks = {
+                            'Button1': lambda: qtile.cmd_spawn('jgmenu_run'),
+                            'Button3': lambda: qtile.cmd_spawn('jgmenu_run')
+                        },
                         margin_x = 6,
                         margin_y = 3
                         ),
                widget.GroupBox(
                        font = "Operator Mono Medium",
-                       fontsize = 19,
-#                       fontshadow = "#000000",
+                       fontsize = 18,
+                       fontshadow = "#000000",
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 1,
@@ -354,7 +364,7 @@ def init_widgets_list():
 #                       other_current_screen_border = colors[0],
 #                       other_screen_border = colors[0],
                        foreground = colors[5],
-                       background = colors[1]
+                       background = colors[1],
 #                        font="Cantarell Bold",
 #                        fontsize = 16,
 #                        margin_y = 2,
@@ -362,9 +372,9 @@ def init_widgets_list():
 #                        padding_y = 0,
 #                        padding_x = 8,
 #                        borderwidth = 2,
-#                        disable_drag = True,
+                        disable_drag = True
 #                        center_aligned = True,
-#                        active = '#F07178',
+#                        active = '#0099ff'
 #                        inactive = colors[4],
 #                        highlight_method = "block",
 #                        block_highlight_text_color = '#ffffff',
@@ -408,7 +418,10 @@ def init_widgets_list():
                widget.WindowName(
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
-                        mouse_callbacks = {'Button2': lambda: qtile.current_window.kill()},
+                        mouse_callbacks = {
+                            'Button2': lambda: qtile.current_window.kill(),
+                            'Button3': lambda: qtile.cmd_spawn('jgmenu_run')
+                        },
                         foreground = "#c387ea",
                         background = colors[1]
                         ),
@@ -570,8 +583,14 @@ def init_widgets_list():
                         ),
                widget.Systray(
                         background=colors[1],
-                        icon_size=20,
+                        icon_size=18,
                         padding = 4
+                        ),
+               widget.Sep(
+                        linewidth = 0,
+                        padding = 3,
+                        foreground = colors[8],
+                        background = colors[1]
                         ),
               ]
     return widgets_list
@@ -587,7 +606,7 @@ def init_widgets_screen1():
 #    widgets_screen2 = init_widgets_list()
 #    return widgets_screen2
 
-widgets_screen1 = init_widgets_screen1()
+#widgets_screen1 = init_widgets_screen1()
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
