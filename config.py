@@ -59,13 +59,14 @@ keys = [
 # FUNCTION KEYS
 
     Key([], "F12", lazy.spawn('jgmenu_run')),
+    Key([mod], "b", lazy.hide_show_bar(), desc="Hides the bar"),
 
 # SUPER + FUNCTION KEYS
 
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=12:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#548aff' -sf '#1b1e2b' -h '22'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=12:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#548aff' -sf '#1b1e2b' -h '24'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
@@ -419,8 +420,11 @@ def init_widgets_list():
                         font="Ubuntu Mono Bold",
                         fontsize = 16,
                         mouse_callbacks = {
+                            'Button1': lazy.layout.next(),
                             'Button2': lambda: qtile.current_window.kill(),
-                            'Button3': lambda: qtile.cmd_spawn('jgmenu_run')
+                            'Button3': lambda: qtile.cmd_spawn('jgmenu_run'),
+                            'Button4': lazy.layout.next(),
+                            'Button5': lazy.layout.previous()
                         },
                         foreground = "#c387ea",
                         background = colors[1]
@@ -610,7 +614,7 @@ def init_widgets_screen1():
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, border_width=[0, 0, 1, 0], opacity=1.00))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24, border_width=[0, 0, 1, 0], opacity=1.00))]
 screens = init_screens()
 
 
