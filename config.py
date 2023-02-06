@@ -73,7 +73,7 @@ keys = [
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "x", lazy.spawn('oblogout')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('urxvt -e fish')),
+    Key([mod], "Return", lazy.spawn('alacritty -e fish')),
     Key([mod], "KP_Enter", lazy.spawn('st')),
     Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check --force-dark-mode')),
     Key([mod], "F2", lazy.spawn('firefox')),
@@ -291,7 +291,7 @@ layout_theme = {"border_width": 2,
 
 
 layouts = [
-    layout.MonadTall(margin=7, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
+    layout.MonadTall(margin=4, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
     #layout.MonadWide(margin=8, border_width=3, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.Matrix(**layout_theme),
     #layout.Bsp(**layout_theme),
@@ -426,6 +426,7 @@ def init_widgets_list():
                             'Button4': lazy.layout.next(),
                             'Button5': lazy.layout.previous()
                         },
+                        max_chars = 100,
                         foreground = "#c387ea",
                         background = colors[1]
                         ),
