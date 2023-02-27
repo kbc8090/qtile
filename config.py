@@ -283,15 +283,16 @@ for i in groups:
 
 #layout_theme = init_layout_theme()
 
-layout_theme = {"border_width": 2,
-                "margin": 8,
-                "border_focus": "#ffb26b",
-                "border_normal": "#4c566a"
-                }
+# layout_theme = {"border_width": 2,
+#                 "margin": 8,
+#                 "border_focus": "#ffb26b",
+#                 "border_normal": "#4c566a"
+#                 }
 
 
 layouts = [
-    layout.MonadTall(margin=4, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
+    layout.MonadTall(margin=5, border_width=2, border_focus="#82dbff", border_normal="#4c566a"),
+    # layout.TreeTab(margin=6, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
     #layout.MonadWide(margin=8, border_width=3, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.Matrix(**layout_theme),
     #layout.Bsp(**layout_theme),
@@ -322,8 +323,8 @@ colors = init_colors()
 
 def init_widgets_defaults():
     return dict(font="Ubuntu Mono Bold",
-                fontsize = 22,
-                padding = 3,
+                fontsize = 16,
+                padding = 0,
                 background=colors[1])
 
 widget_defaults = init_widgets_defaults()
@@ -347,15 +348,15 @@ def init_widgets_list():
                         margin_y = 3
                         ),
                widget.GroupBox(
-                       font = "Operator Mono Medium",
-                       fontsize = 18,
+                       font = "JetBrains Mono Bold",
+                       fontsize = 14,
                        fontshadow = "#000000",
-                       margin_y = 3,
+                       margin_y = 4,
                        margin_x = 0,
                        padding_y = 1,
                        padding_x = 6,
                        borderwidth = 2,
-                       active = '#f07178',
+                       active = colors[8],
                        inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[0],
@@ -373,12 +374,12 @@ def init_widgets_list():
 #                        padding_y = 0,
 #                        padding_x = 8,
 #                        borderwidth = 2,
-                        disable_drag = True
+                        disable_drag = True,
 #                        center_aligned = True,
 #                        active = '#0099ff'
 #                        inactive = colors[4],
 #                        highlight_method = "block",
-#                        block_highlight_text_color = '#ffffff',
+                       block_highlight_text_color = "#f07178",
 #                        highlight_color	= ['#FFFFFF', '#0099ff'],
 #                        this_screen_border = '#FFFFFF',
 #                        this_current_screen_border = '#0099ff',
@@ -615,7 +616,7 @@ def init_widgets_screen1():
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=24, border_width=[0, 0, 1, 0], opacity=1.00))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, border_width=[0, 0, 1, 0], opacity=1.00))]
 screens = init_screens()
 
 
