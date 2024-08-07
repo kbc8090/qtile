@@ -30,11 +30,11 @@ import re
 import subprocess
 import socket
 from libqtile.config import Key, Screen, Group, Drag, Click, Match, Rule
-from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook, qtile
+from libqtile.lazy import lazy
 #from libqtile.widget import Spacer
 #import arcomemory
-
+# free -h | nawk '/Mem:/ {gsub(/i/,""); print "\x10  " $3 "/" $2 "
 #mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
@@ -66,7 +66,7 @@ keys = [
     Key([mod], "e", lazy.spawn('atom')),
     Key([mod], "c", lazy.spawn('conky-toggle')),
 #    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'JetBrains Mono Medium:size=11' -nb '#2F343F' -nf 'white' -sb '#5294E2' -sf 'white'")),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=12:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#548aff' -sf '#1b1e2b' -h '24'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -fn 'Ubuntu Mono:size=12:style=Bold' -nb '#1b1e2b' -nf 'white' -sb '#548aff' -sf '#1b1e2b' -h '22'")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "r", lazy.spawn('rofi-theme-selector')),
@@ -243,9 +243,9 @@ keys = [
 groups = []
 
 # FOR QWERTY KEYBOARDS
-group_names = ["1", "2", "3", "4", "5", "6",]
+group_names = ["1", "2", "3", "4", "5", "6", "7"]
 
-group_labels = ["1", "2", "3", "4", "5", "6",]
+group_labels = ["1", "2", "3", "4", "5", "6", "7"]
 #group_labels = ["", "", "", "", "", "", "", "", "", "",]
 
 group_layouts = ["monadtall", "max", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
@@ -291,7 +291,7 @@ for i in groups:
 
 
 layouts = [
-    layout.MonadTall(margin=5, border_width=2, border_focus="#82dbff", border_normal="#4c566a"),
+    layout.MonadTall(margin=6, border_width=2, border_focus="#82dbff", border_normal="#4c566a"),
     # layout.TreeTab(margin=6, border_width=2, border_focus="#ffb26b", border_normal="#4c566a"),
     #layout.MonadWide(margin=8, border_width=3, border_focus="#0099ff", border_normal="#4c566a"),
     #layout.Matrix(**layout_theme),
@@ -305,7 +305,7 @@ layouts = [
 
 def init_colors():
     return [["#3c4457", "#3c4457"], # color 0
-            ["#1b1e2b", "#1b1e2b"], # color 1
+            ["#24283b", "#24283b"], # color 1
             ["#c0c5ce", "#c0c5ce"], # color 2
             ["#ffb26b", "#ffb26b"], # color 3
             ["#0099ff", "#0099ff"], # color 4
@@ -349,14 +349,14 @@ def init_widgets_list():
                         ),
                widget.GroupBox(
                        font = "JetBrains Mono Bold",
-                       fontsize = 14,
+                       fontsize = 16,
                        fontshadow = "#000000",
                        margin_y = 4,
                        margin_x = 0,
                        padding_y = 1,
                        padding_x = 6,
                        borderwidth = 2,
-                       active = colors[8],
+                       active = colors[4],
                        inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[0],
@@ -433,18 +433,18 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text=" ",
-                        foreground="#000000",
+                        text="  ",
+                        foreground="#24283b",
                         background="#ffb26b",
                         padding = 2,
-                        fontsize=16
+                        fontsize=14
                         ),
               widget.OpenWeather(
                         app_key = '7834197c2338888258f8cb94ae14ef49',
                         cityid = '4156404',
                         format = '{weather_details} {main_temp}°{units_temperature} ',
-                        fontsize = 16,
-                        foreground = "#000000",
+                        fontsize = 14,
+                        foreground = "#24283b",
                         json = 'True',
                         background = "#ffb26b",
                         padding = 6,
@@ -453,74 +453,84 @@ def init_widgets_list():
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 5,
+                        padding = 1,
                         foreground = colors[8],
                         background = colors[1]
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
-                        foreground="#000000",
+                        text="  ",
+                        foreground="#24283b",
                         background="#82dbff",
                         padding = 2,
                         fontsize=16
                         ),
               widget.GenPollText(
+                        font = "Ubuntu Mono Bold",
                         update_interval = 12000,
                         func = lambda: subprocess.check_output(["uname", "-r"]).decode("utf-8").strip(),
-                        fontsize = 16,
+                        fontsize = 14,
                         padding = 6,
-                        foreground = "#000000",
+                        foreground = "#24283b",
                         background = "#82dbff"
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 5,
+                        padding = 1,
                         foreground = colors[8],
                         background = colors[1]
                         ),
-               widget.TextBox(
-                        font="FontAwesome",
-                        text=" ",
-                        foreground="#000000",
-                        background="#c792ea",
-                        padding = 2,
-                        fontsize = 16
-                        ),
-               widget.Volume(
-                        font="Ubuntu Mono Bold",
-                        foreground="#000000",
-                        background="#c792ea",
+ #              widget.TextBox(
+ #                       font="FontAwesome",
+ #                       text=" ",
+ #                       foreground="#000000",
+ #                       background="#c792ea",
+ #                       padding = 2,
+ #                       fontsize = 16
+ #                       ),
+ #              widget.PulseVolume(
+ #                       font="Ubuntu Mono Bold",
+ #                       foreground="#000000",
+ #                       background="#c792ea",
+ #                       padding = 6,
+ #                       fontsize = 16
+ #                       ),
+              widget.GenPollText(
+                        font = "JetBrainsMono Nerd Font Bold",
+                        update_interval = 5,
+                        func = lambda: subprocess.check_output(["/home/kbc/.local/bin/volume"]).decode("utf-8").strip(),
+                        fontsize = 12,
                         padding = 6,
-                        fontsize = 16
+                        foreground = "#24283b",
+                        background = "#c792ea"
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 5,
+                        padding = 1,
                         foreground = colors[8],
                         background = colors[1]
                         ),
                 widget.TextBox(
                         font="FontAwesome",
                         text=" ",
-                        foreground="#000000",
+                        foreground="#24283b",
                         background="#82aaff",
                         padding = 2,
-                        fontsize=16
+                        fontsize = 14,
                         ),
                widget.Memory(
                         font = "Ubuntu Mono Bold",
                         #format = '{MemUsed}M',
                         format = '{MemUsed:.0f}{mm}',
                         update_interval = 5,
-                        fontsize = 16,
+                        fontsize = 14,
                         padding = 6,
-                        foreground = "#000000",
+                        foreground = "#24283b",
                         background = "#82aaff",
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 5,
+                        padding = 1,
                         foreground = colors[8],
                         background = colors[1]
                         ),
@@ -561,40 +571,40 @@ def init_widgets_list():
               widget.GenPollText(
                         update_interval = 600,
                         func = lambda: subprocess.check_output(["/home/kbc/.config/qtile/scripts/pacupdate"]).decode("utf-8").strip(),
-                        fontsize = 16,
+                        fontsize = 14,
                         padding = 6,
-                        foreground = "#000000",
+                        foreground = "#24283b",
                         background = "#f07178"
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 5,
+                        padding = 1,
                         foreground = colors[8],
                         background = colors[1]
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
-                        foreground="#000000",
+                        text="   ",
+                        foreground="#24283b",
                         background="#c3e88d",
                         padding = 0,
-                        fontsize=16
+                        fontsize=14
                         ),
                widget.Clock(
-                        foreground = "#000000",
+                        foreground = "#24283b",
                         background = "#c3e88d",
-                        fontsize = 16,
+                        fontsize = 14,
                         padding = 6,
                         format="%b %d, %I:%M %p"
                         ),
                widget.Systray(
                         background=colors[1],
                         icon_size=18,
-                        padding = 4
+                        padding = 3
                         ),
                widget.Sep(
                         linewidth = 0,
-                        padding = 3,
+                        padding = 2,
                         foreground = colors[8],
                         background = colors[1]
                         ),
