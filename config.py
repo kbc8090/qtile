@@ -73,7 +73,7 @@ keys = [
     Key([mod], "v", lazy.spawn('pavucontrol')),
     Key([mod], "x", lazy.spawn('oblogout')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('alacritty -e fish')),
+    Key([mod], "Return", lazy.spawn('st')),
     Key([mod], "KP_Enter", lazy.spawn('st')),
     Key([mod], "F1", lazy.spawn('chromium -no-default-browser-check --force-dark-mode')),
     Key([mod], "F2", lazy.spawn('firefox')),
@@ -348,9 +348,9 @@ def init_widgets_list():
                         margin_y = 3
                         ),
                widget.GroupBox(
-                       font = "JetBrains Mono Bold",
-                       fontsize = 16,
-                       fontshadow = "#000000",
+                       font = "Ubuntu Mono Bold",
+                       fontsize = 15,
+                       fontshadow = "#24283b",
                        margin_y = 4,
                        margin_x = 0,
                        padding_y = 1,
@@ -419,7 +419,7 @@ def init_widgets_list():
                        ),
                widget.WindowName(
                         font="Ubuntu Mono Bold",
-                        fontsize = 16,
+                        fontsize = 14,
                         mouse_callbacks = {
                             'Button1': lazy.layout.next(),
                             'Button2': lambda: qtile.current_window.kill(),
@@ -626,7 +626,7 @@ def init_widgets_screen1():
 #widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=22, border_width=[0, 0, 1, 0], opacity=1.00))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=21, border_width=[0, 0, 1, 0], opacity=1.00))]
 screens = init_screens()
 
 
